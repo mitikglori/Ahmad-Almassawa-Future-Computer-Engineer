@@ -1,6 +1,9 @@
-export default function Projects(){
+export default function Projects({ sectionId = "projects", className = "" }){
     return(
-        <section className="py-16 px-4">
+        <section id={sectionId} className={`relative overflow-hidden py-16 px-4 ${className}`}>
+        <div aria-hidden className="absolute inset-0 pointer-events-none" data-parallax-speed="0.1">
+          <div className="absolute -top-28 -right-20 w-[28rem] h-[28rem] rounded-full bg-emerald-500/18 blur-3xl" />
+        </div>
         <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-blue-200">Projects</h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="p-6 bg-gray-800 rounded-xl shadow-lg">

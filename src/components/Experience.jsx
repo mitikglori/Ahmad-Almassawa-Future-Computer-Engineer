@@ -1,8 +1,8 @@
 import React from "react";
 
-function Experience() {
+function Experience({ sectionId = "experience", className = "" }) {
   return (
-    <section className="max-w-3xl mx-auto py-12 px-6">
+    <section id={sectionId} className={`max-w-3xl mx-auto py-12 px-6 ${className}`}>
       <h2 className="text-4xl font-bold mb-8 text-center">Experience</h2>
       <div className="space-y-8">
         <div className="bg-gray-900 rounded-lg p-6 shadow">
