@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Skills from "./pages/Skills";
-import Experience from "./pages/Experience";
-import Projects from "./pages/Projects";
-import Contacts from "./pages/Contacts";
+import Home from "./components/Home";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Experience from "./components/Experience";
+import Projects from "./components/Projects";
+import Contacts from "./components/Contacts";
+import Photography from "./components/Photography";
 
 function App() {
   const [active, setActive] = useState("home");
@@ -17,7 +18,8 @@ function App() {
     about: <About />,
     skills: <Skills />,
     experience: <Experience />, 
-    contact: <Contact />,
+    contacts: <Contacts />,
+    photography: <Photography />,
   };
 
   return (
