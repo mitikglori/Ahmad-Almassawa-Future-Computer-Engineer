@@ -1,34 +1,39 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Experience from "./components/Experience";
-import Education from "./components/Education";
-import Photography from "./components/Photography";
-import About from "./components/About";
-import Contacts from "./components/Contacts";
-import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Skills from "./pages/Skills";
+import Experience from "./pages/Experience";
+import Projects from "./pages/Projects";
+import Contacts from "./pages/Contacts";
 
 function App() {
   const [active, setActive] = useState("home");
 
   const sections = {
     home: <Home />,
-    skills: <Skills />,
     projects: <Projects />,
-    experience: <Experience />,
-    education: <Education />,
-    photography: <Photography />,
     about: <About />,
-    contact: <Contacts />,
+    skills: <Skills />,
+    experience: <Experience />, 
+    contact: <Contact />,
   };
 
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans">
       <Navbar active={active} setActive={setActive} sections={sections} />
-      <main>{sections[active]}</main>
-      <Footer />
+      <main>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path='/photography' element={<Photography />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/contacts" element={<Contacts />} />
+        </Routes>
+      </main>
     </div>
   );
 }
