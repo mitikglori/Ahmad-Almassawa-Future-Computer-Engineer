@@ -9,7 +9,7 @@ export default function Home({ sectionId = "home", className = "" }) {
           Ahmad Almassawa
         </h1>
         <p className="text-xl md:text-2xl text-gray-200 slide-up stagger-1">
-          Future Computer Engineer | Builder | Photographer
+          {/* Future Computer Engineer | Builder | Photographer */}Future Computer engineer | Lorem ipsum dolor sit amet.
         </p>
         <div className="flex justify-center space-x-4 mt-8 slide-up stagger-2">
           <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>

@@ -9,25 +9,24 @@ export default function Projects({ sectionId = "projects", className = "" }){
           <div className="p-6 bg-gray-800 rounded-xl shadow-lg">
             <h3 className="text-xl font-bold text-blue-300">Math Duel Game</h3>
             <p className="mt-2 text-gray-200">
-              Competitive 1v1 calculus practice game. Built with React.
+              {/* Competitive 1v1 calculus practice game. Built with React. */}Lorem ipsum dolor sit amet.
             </p>
             <a
               href="#"
               className="inline-block mt-3 text-blue-400 hover:underline"
             >
-              Play Demo
+              {/* Play Demo */} Lorem ipsum dolor sit amet.
             </a>
           </div>
           <div className="p-6 bg-gray-800 rounded-xl shadow-lg">
-            <h3 className="text-xl font-bold text-blue-300">Arduino Circuits</h3>
+            <h3 className="text-xl font-bold text-blue-300">
+              {/* Arduino Circuits */} Lorem ipsum dolor sit amet.
+            </h3>
             <p className="mt-2 text-gray-200">
-              Small projects experimenting with sensors and electronics.
+              {/* Small projects experimenting with sensors and electronics. */}Lorem ipsum dolor sit amet.
             </p>
-            <a
-              href="#"
-              className="inline-block mt-3 text-blue-400 hover:underline"
-            >
-              View Code
+            <a href="#" className="inline-block mt-3 text-blue-400 hover:underline">
+              {/* View Code */} Lorem ipsum dolor sit amet.
             </a>
           </div>
         </div>

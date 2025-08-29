@@ -5,7 +5,6 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
-import Contacts from "./components/Contacts";
 
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
     "skills",
     "experience",
     "projects",
-    "contacts",
   ], []);
 
   const handleNavigate = useCallback((key) => {
@@ -98,7 +96,6 @@ function App() {
         <Skills sectionId="skills" className="min-h-screen h-screen snap-start scroll-mt-20" />
         <Experience sectionId="experience" className="min-h-screen h-screen snap-start scroll-mt-20" />
         <Projects sectionId="projects" className="min-h-screen h-screen snap-start scroll-mt-20" />
-        <Contacts sectionId="contacts" className="min-h-screen h-screen snap-start scroll-mt-20" />
       </main>
     </div>
   );
