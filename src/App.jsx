@@ -34,16 +34,21 @@ function App() {
 
     const options = {
       root,
-      threshold: 0.6,
+      threshold: 0.3, // Reduced threshold for better detection
+      rootMargin: "-10% 0px -10% 0px", // Better margin for detection
     };
 
     const handler = (entries) => {
       let topMost = null;
+      let maxRatio = 0;
+      
       for (const entry of entries) {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+          maxRatio = entry.intersectionRatio;
           topMost = entry.target.getAttribute('id');
         }
       }
+      
       if (topMost) setActive(topMost);
     };
 
@@ -92,10 +97,10 @@ function App() {
       <Navbar active={active} onNavigate={handleNavigate} items={sectionOrder} />
       <main ref={containerRef} className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
         <Home sectionId="home" className="h-screen snap-start scroll-mt-20" />
-        <About sectionId="about" className="min-h-screen h-screen snap-start scroll-mt-20" />
-        <Skills sectionId="skills" className="min-h-screen h-screen snap-start scroll-mt-20" />
-        <Experience sectionId="experience" className="min-h-screen h-screen snap-start scroll-mt-20" />
-        <Projects sectionId="projects" className="min-h-screen h-screen snap-start scroll-mt-20" />
+        <About sectionId="about" className="min-h-screen snap-start scroll-mt-20" />
+        <Skills sectionId="skills" className="min-h-screen snap-start scroll-mt-20" />
+        <Experience sectionId="experience" className="min-h-screen snap-start scroll-mt-20" />
+        <Projects sectionId="projects" className="min-h-screen snap-start scroll-mt-20" />
       </main>
     </div>
   );

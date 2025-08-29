@@ -2,15 +2,15 @@ import React from "react";
 
 export default function About({ sectionId = "about", className = "" }) {
   return (
-    <section id={sectionId} className={`relative overflow-hidden py-16 px-4 max-w-4xl mx-auto ${className}`}>
+    <section id={sectionId} className={`relative overflow-hidden py-12 px-4 max-w-4xl mx-auto ${className}`}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" data-parallax-speed="0.08">
         <div className="absolute -bottom-24 -left-16 w-[28rem] h-[28rem] rounded-full bg-purple-500/18 blur-3xl" />
       </div>
-      <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-blue-200 text-center">About Me</h2>
+      <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-blue-200 text-center">About Me</h2>
       
       {/* Main content */}
-      <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
-        <div className="space-y-4">
+      <div className="grid md:grid-cols-2 gap-6 items-center mb-8">
+        <div className="space-y-3">
           <p className="text-gray-200 leading-relaxed">
             {/* I'm a high school student from Indonesia passionate about computer engineering, coding, and creative problem solving. 
             I enjoy building math games, experimenting with electronics, and documenting student life through photography. */}
@@ -25,19 +25,19 @@ export default function About({ sectionId = "about", className = "" }) {
         </div>
         
         {/* Photo showcase */}
-        <div className="space-y-4">
-          <h3 className="text-xl font-medium text-blue-100 mb-4">Through My Lens</h3>
+        <div className="space-y-3">
+          <h3 className="text-xl font-medium text-blue-100 mb-3">Through My Lens</h3>
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-gray-700 h-32 rounded-lg flex items-center justify-center text-gray-400 text-sm">
+            <div className="bg-gray-700 h-28 rounded-lg flex items-center justify-center text-gray-400 text-sm">
               [Student Life Photo]
             </div>
-            <div className="bg-gray-700 h-32 rounded-lg flex items-center justify-center text-gray-400 text-sm">
+            <div className="bg-gray-700 h-28 rounded-lg flex items-center justify-center text-gray-400 text-sm">
               [Event Photo]
             </div>
-            <div className="bg-gray-700 h-32 rounded-lg flex items-center justify-center text-gray-400 text-sm">
+            <div className="bg-gray-700 h-28 rounded-lg flex items-center justify-center text-gray-400 text-sm">
               [Sports Photo]
             </div>
-            <div className="bg-gray-700 h-32 rounded-lg flex items-center justify-center text-gray-400 text-sm">
+            <div className="bg-gray-700 h-28 rounded-lg flex items-center justify-center text-gray-400 text-sm">
               [Candid Photo]
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function About({ sectionId = "about", className = "" }) {
       </div>
 
       {/* Skills connection */}
-      <div className="text-center p-6 bg-gray-800/50 rounded-lg border border-gray-700/50">
+      <div className="text-center p-5 bg-gray-800/50 rounded-lg border border-gray-700/50">
         <h3 className="text-lg font-medium text-blue-100 mb-3">
           {/* How Photography Complements My Engineering Journey */} lorem ipsum dolor sit amet.
         </h3>
