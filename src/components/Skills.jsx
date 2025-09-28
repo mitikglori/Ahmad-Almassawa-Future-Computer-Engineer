@@ -1,6 +1,4 @@
-import React from "react";
-
-function Skills({ sectionId = "skills", className = "" }) {
+export default function Skills({ sectionId = "skills", className = "" }) {
   return (
     <section id={sectionId} className={`relative overflow-hidden max-w-3xl mx-auto py-12 px-6 ${className}`}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" data-parallax-speed="0.08">
@@ -37,5 +35,3 @@ function Skills({ sectionId = "skills", className = "" }) {
     </section>
   );
 }
-
-export default Skills;

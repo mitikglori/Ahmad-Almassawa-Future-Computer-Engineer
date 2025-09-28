@@ -1,6 +1,4 @@
-import React from "react";
-
-function Experience({ sectionId = "experience", className = "" }) {
+export default function Experience({ sectionId = "experience", className = "" }) {
   return (
     <section id={sectionId} className={`max-w-3xl mx-auto py-12 px-6 ${className}`}>
       <h2 className="text-4xl font-bold mb-8 text-center">Experience</h2>
@@ -40,5 +38,3 @@ function Experience({ sectionId = "experience", className = "" }) {
     </section>
   );
 }
-
-export default Experience;

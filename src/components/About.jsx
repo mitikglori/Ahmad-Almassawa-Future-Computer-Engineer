@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function About({ sectionId = "about", className = "" }) {
   return (
     <section id={sectionId} className={`relative overflow-hidden py-12 px-4 max-w-4xl mx-auto ${className}`}>

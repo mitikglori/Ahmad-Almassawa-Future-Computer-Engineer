@@ -14,7 +14,7 @@ export default function Navbar({ active, onNavigate, items }) {
           <span className="relative">
             {key}
             {active === key && (
-              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400 scale-in"></span>
+              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400 scale-in" />
             )}
           </span>
         </button>

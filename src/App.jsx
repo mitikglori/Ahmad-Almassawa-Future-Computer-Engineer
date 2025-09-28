@@ -72,8 +72,7 @@ function App() {
       const scrollTop = root.scrollTop;
       const layers = root.querySelectorAll('[data-parallax-speed]');
       layers.forEach((el) => {
-        const speedAttr = el.getAttribute('data-parallax-speed');
-        const speed = Number(speedAttr || 0);
+        const speed = Number(el.getAttribute('data-parallax-speed') || 0);
         const translateY = Math.round(scrollTop * speed);
         el.style.transform = `translateY(${translateY}px)`;
       });
