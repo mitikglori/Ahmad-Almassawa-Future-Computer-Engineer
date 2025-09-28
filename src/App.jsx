@@ -90,14 +90,31 @@ function App() {
       // Don't update active state during navigation
       if (isNavigating) return;
       
-      // Find the section with the highest intersection ratio
+      // Get all sections and find the one that's most in view
+      const allSections = Array.from(root.querySelectorAll('section[id]'));
       let bestMatch = null;
-      let bestRatio = 0;
+      let bestScore = -1;
       
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio > bestRatio) {
-          bestRatio = entry.intersectionRatio;
-          bestMatch = entry.target.getAttribute('id');
+      allSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const rootRect = root.getBoundingClientRect();
+        
+        // Calculate how much of the section is visible in the viewport
+        const visibleTop = Math.max(rect.top, rootRect.top);
+        const visibleBottom = Math.min(rect.bottom, rootRect.bottom);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const visibilityRatio = visibleHeight / rect.height;
+        
+        // Calculate how close the section is to the top of the viewport
+        const distanceFromTop = Math.abs(rect.top - rootRect.top);
+        const positionScore = Math.max(0, 1 - distanceFromTop / rootRect.height);
+        
+        // Combined score: visibility ratio + position bonus
+        const score = visibilityRatio + (positionScore * 0.3);
+        
+        if (score > bestScore && visibilityRatio > 0.1) { // Only consider sections that are at least 10% visible
+          bestScore = score;
+          bestMatch = section.getAttribute('id');
         }
       });
       
@@ -108,7 +125,18 @@ function App() {
     const sections = root.querySelectorAll('section[id]');
     sections.forEach((s) => observer.observe(s));
 
-    return () => observer.disconnect();
+    // Add scroll event listener as backup
+    const scrollHandler = () => {
+      if (isNavigating) return;
+      handler([]); // Trigger the same logic
+    };
+
+    root.addEventListener('scroll', scrollHandler, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      root.removeEventListener('scroll', scrollHandler);
+    };
   }, [isNavigating]);
 
   useEffect(() => {
