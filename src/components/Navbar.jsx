@@ -1,6 +1,14 @@
-export default function Navbar({ active, onNavigate, items }) {
+export default function Navbar({ active, onNavigate, items, scrollProgress = 0 }) {
   return (
-    <nav className="flex justify-center space-x-8 bg-gray-900 py-5 sticky top-0 shadow-lg z-10 backdrop-blur-sm bg-opacity-95">
+    <nav className="flex justify-center space-x-8 bg-gray-900 py-5 sticky top-0 shadow-lg z-10 backdrop-blur-sm bg-opacity-95 relative">
+      {/* Scroll Progress Indicator */}
+      <div 
+        className="absolute bottom-0 left-0 h-0.5 bg-blue-400 transition-all duration-500 ease-out"
+        style={{ 
+          width: `${scrollProgress}%`,
+          transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+        }}
+      />
       {items.map((key) => (
         <button
           key={key}

@@ -13,6 +13,11 @@
     animation: scaleIn 0.4s ease-out;
   }
   
+  .progress-bar {
+    animation: progressFill 1.5s ease-out forwards;
+    width: 0% !important;
+  }
+  
   .stagger-1 { animation-delay: 0.1s; }
   .stagger-2 { animation-delay: 0.15s; }
 }
@@ -37,6 +42,15 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--target-width);
   }
 }
 
