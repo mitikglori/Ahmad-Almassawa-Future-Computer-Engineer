@@ -54,6 +54,17 @@
   }
 }
 
+:root {
+  /* Approximate navbar height; used for scroll offsets and hero layout */
+  --nav-h: 64px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --nav-h: 72px;
+  }
+}
+
 @layer utilities {
   .transition-smooth {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

@@ -1,6 +1,6 @@
 export default function Home({ sectionId = "home", className = "" }) {
   return (
-    <section id={sectionId} className={`relative overflow-hidden py-20 px-4 text-center min-h-screen flex flex-col justify-center ${className}`}>
+    <section id={sectionId} className={`relative overflow-hidden px-4 text-center flex flex-col justify-center py-12 md:py-20 ${className}`}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" data-parallax-speed="0.12">
         <div className="absolute -top-40 right-6 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl" />
       </div>

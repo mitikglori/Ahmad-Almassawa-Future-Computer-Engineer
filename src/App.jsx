@@ -28,22 +28,17 @@ function App() {
     if (el) {
       setIsNavigating(true);
       setActive(key);
-      
-      const navbarHeight = 80; // Approximate navbar height
-      const elementPosition = el.offsetTop - navbarHeight;
+      const container = containerRef.current;
+      // Use native scrollIntoView with scroll-padding-top on the container
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       
       // Calculate target progress for smooth animation
-      const container = containerRef.current;
       if (container) {
+        const elementPosition = el.offsetTop;
         const scrollHeight = container.scrollHeight - container.clientHeight;
         const targetProgressValue = scrollHeight > 0 ? (elementPosition / scrollHeight) * 100 : 0;
         setTargetProgress(targetProgressValue);
       }
-      
-      containerRef.current?.scrollTo({
-        top: elementPosition,
-        behavior: "smooth"
-      });
       
       // Reset navigation lock after scroll completes
       const resetNavigation = () => {
@@ -200,12 +195,12 @@ function App() {
   return (
     <div className="h-screen bg-gray-950 text-white font-sans flex flex-col">
       <Navbar active={active} onNavigate={handleNavigate} items={sectionOrder} scrollProgress={scrollProgress} />
-      <main ref={containerRef} className="flex-1 overflow-y-scroll scroll-smooth">
-        <Home sectionId="home" className="h-screen scroll-mt-20" />
-        <About sectionId="about" className="min-h-screen scroll-mt-20" />
-        <Skills sectionId="skills" className="min-h-screen scroll-mt-20" />
-        <Experience sectionId="experience" className="min-h-screen scroll-mt-20" />
-        <Projects sectionId="projects" className="min-h-screen scroll-mt-20" />
+      <main ref={containerRef} className="flex-1 overflow-y-scroll scroll-smooth scroll-pt-[var(--nav-h)]">
+        <Home sectionId="home" className="min-h-[calc(100dvh-var(--nav-h))] scroll-mt-[var(--nav-h)]" />
+        <About sectionId="about" className="min-h-[100dvh] scroll-mt-[var(--nav-h)]" />
+        <Skills sectionId="skills" className="min-h-[100dvh] scroll-mt-[var(--nav-h)]" />
+        <Experience sectionId="experience" className="min-h-[100dvh] scroll-mt-[var(--nav-h)]" />
+        <Projects sectionId="projects" className="min-h-[100dvh] scroll-mt-[var(--nav-h)]" />
       </main>
       <Footer />
       <FloatingContact />
