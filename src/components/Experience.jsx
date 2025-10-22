@@ -15,7 +15,7 @@ export default function Experience({ sectionId = "experience", className = "" })
       ],
       skills: ["React", "JavaScript", "Tailwind CSS", "Git", "Agile"],
       icon: "💼",
-      color: "blue"
+      accent: "bg-blue-500/20 text-blue-200 border-blue-400/40"
     },
     {
       type: "Project",
@@ -32,7 +32,7 @@ export default function Experience({ sectionId = "experience", className = "" })
       ],
       skills: ["React", "Tailwind CSS", "JavaScript", "Vite", "SEO"],
       icon: "💻",
-      color: "purple"
+      accent: "bg-purple-500/20 text-purple-200 border-purple-400/40"
     },
     {
       type: "Volunteer",
@@ -49,7 +49,7 @@ export default function Experience({ sectionId = "experience", className = "" })
       ],
       skills: ["Teaching", "JavaScript", "Python", "Leadership", "Communication"],
       icon: "👨‍🏫",
-      color: "green"
+      accent: "bg-emerald-500/20 text-emerald-200 border-emerald-400/40"
     },
     {
       type: "Competition",
@@ -66,148 +66,127 @@ export default function Experience({ sectionId = "experience", className = "" })
       ],
       skills: ["Calculus", "Problem Solving", "Analytical Thinking", "Time Management"],
       icon: "🏆",
-      color: "yellow"
+      accent: "bg-amber-500/20 text-amber-200 border-amber-400/40"
     }
   ];
 
-  const getColorClasses = (color) => {
-    const colors = {
-      blue: "bg-blue-500/20 text-blue-400 border-blue-500/30",
-      purple: "bg-purple-500/20 text-purple-400 border-purple-500/30",
-      green: "bg-green-500/20 text-green-400 border-green-500/30",
-      yellow: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
-    };
-    return colors[color] || colors.blue;
-  };
-
-  const getTypeColor = (type) => {
-    const types = {
-      Internship: "bg-blue-600/20 text-blue-300 border-blue-600/30",
-      Project: "bg-purple-600/20 text-purple-300 border-purple-600/30",
-      Volunteer: "bg-green-600/20 text-green-300 border-green-600/30",
-      Competition: "bg-yellow-600/20 text-yellow-300 border-yellow-600/30"
-    };
-    return types[type] || types.Project;
-  };
-
   return (
-    <section id={sectionId} className={`relative overflow-hidden py-16 px-4 max-w-6xl mx-auto ${className}`}>
-      <div aria-hidden className="absolute inset-0 pointer-events-none" data-parallax-speed="0.05">
-        <div className="absolute -top-20 right-10 w-72 h-72 rounded-full bg-orange-500/10 blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-64 h-64 rounded-full bg-pink-500/10 blur-3xl" />
-      </div>
-      
-      {/* Header */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-blue-200">Experience & Achievements</h2>
-        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-          My journey through internships, projects, and competitions that have shaped my growth as a future computer engineer.
-        </p>
+    <section
+      id={sectionId}
+      className={`relative overflow-hidden py-20 sm:py-24 ${className}`}
+    >
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        data-parallax-speed="0.05"
+      >
+        <div className="absolute -top-16 right-8 h-[22rem] w-[22rem] rounded-full bg-orange-500/12 blur-3xl" />
+        <div className="absolute bottom-8 left-8 h-[18rem] w-[18rem] rounded-full bg-pink-500/10 blur-3xl" />
       </div>
 
-      {/* Timeline */}
-      <div className="relative">
-        {/* Timeline Line */}
-        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-green-500 hidden lg:block"></div>
-        
-        <div className="space-y-12">
-          {experiences.map((exp, index) => (
-            <div key={exp.title} className="relative">
-              {/* Timeline Dot */}
-              <div className="absolute left-6 w-4 h-4 bg-blue-500 rounded-full border-4 border-gray-900 hidden lg:block z-10"></div>
-              
-              <div className="lg:ml-16">
-                <div className="group bg-gray-800/30 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/30 hover:border-blue-500/50 transition-all duration-500 hover:scale-[1.02]">
-                  {/* Header */}
-                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <span className="text-2xl">{exp.icon}</span>
-                        <div>
-                          <h3 className="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                            {exp.title}
-                          </h3>
-                          <p className="text-lg text-blue-200 font-medium">{exp.company}</p>
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-4">
-                        <span className="flex items-center">
-                          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                          {exp.location}
-                        </span>
-                        <span className="flex items-center">
-                          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                          </svg>
-                          {exp.duration}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getTypeColor(exp.type)}`}>
-                        {exp.type}
+      <div className="relative mx-auto max-w-6xl px-4 lg:px-8">
+        <header className="text-center">
+          <h2 className="text-4xl font-bold text-slate-100 sm:text-5xl">
+            Experience & Achievements
+          </h2>
+          <p className="mx-auto mt-6 max-w-3xl text-lg text-slate-300">
+            Highlights from internships, passion projects, and competitions that have shaped my growth as a future computer engineer.
+          </p>
+        </header>
+
+        <div className="mt-16 space-y-12">
+          {experiences.map((exp) => (
+            <article
+              key={exp.title}
+              className="rounded-3xl border border-slate-800/60 bg-slate-900/60 p-8 shadow-[0_22px_45px_rgba(15,23,42,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:border-blue-400/40"
+            >
+              <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+                <div className="flex flex-1 items-start gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-800/80 text-2xl">
+                    {exp.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-slate-100">
+                      {exp.title}
+                    </h3>
+                    <p className="mt-1 text-lg font-medium text-blue-100">
+                      {exp.company}
+                    </p>
+                    <div className="mt-3 flex flex-wrap items-center gap-3 text-xs font-medium text-slate-400">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-slate-700/60 px-3 py-1">
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        {exp.location}
+                      </span>
+                      <span className="inline-flex items-center gap-1 rounded-full border border-slate-700/60 px-3 py-1">
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        {exp.duration}
                       </span>
                     </div>
                   </div>
+                </div>
 
-                  {/* Description */}
-                  <p className="text-gray-300 leading-relaxed mb-6">
-                    {exp.description}
-                  </p>
+                <span className={`inline-flex items-center justify-center self-start rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] ${exp.accent}`}>
+                  {exp.type}
+                </span>
+              </div>
 
-                  {/* Achievements */}
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-blue-200 mb-3">Key Achievements</h4>
-                    <ul className="space-y-2">
-                      {exp.achievements.map((achievement, idx) => (
-                        <li key={idx} className="flex items-start space-x-3 text-gray-300">
-                          <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
-                          <span className="text-sm leading-relaxed">{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              <p className="mt-6 text-base text-slate-300">
+                {exp.description}
+              </p>
 
-                  {/* Skills */}
-                  <div>
-                    <h4 className="text-lg font-semibold text-blue-200 mb-3">Technologies & Skills</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.skills.map((skill) => (
-                        <span 
-                          key={skill}
-                          className={`px-3 py-1 rounded-lg text-xs font-medium border ${getColorClasses(exp.color)}`}
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
+              <div className="mt-6 grid gap-4 md:grid-cols-[minmax(0,0.55fr)_minmax(0,0.45fr)] md:items-start">
+                <div>
+                  <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-blue-200">
+                    Key achievements
+                  </h4>
+                  <ul className="mt-4 space-y-3 text-sm text-slate-300">
+                    {exp.achievements.map((achievement) => (
+                      <li key={achievement} className="flex items-start gap-3">
+                        <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-blue-400" />
+                        <span>{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-blue-200">
+                    Tools & skills
+                  </h4>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {exp.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-full border border-slate-700/60 bg-slate-950/60 px-3 py-1 text-xs font-medium text-slate-200"
+                      >
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
-      </div>
 
-      {/* Call to Action */}
-      <div className="mt-16 text-center">
-        <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-8 border border-gray-700/30">
-          <h3 className="text-2xl font-bold text-blue-200 mb-4">Ready for the Next Challenge</h3>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            I'm always looking for new opportunities to learn, grow, and make an impact. 
-            Whether it's an internship, project collaboration, or competition, I'm ready to take on the next challenge.
+        <div className="mt-16 rounded-3xl border border-slate-800/60 bg-slate-900/60 p-8 text-center shadow-[0_22px_45px_rgba(15,23,42,0.45)]">
+          <h3 className="text-2xl font-semibold text-slate-100">Ready for the next challenge</h3>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-300">
+            I'm always looking for new opportunities to learn, grow, and make an impact. Whether it's an internship, project collaboration, or competition, I'm ready to take on the next challenge.
           </p>
-          <a 
+          <a
             href="mailto:ahmad.almassawa@email.com"
-            className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(37,99,235,0.3)] transition-smooth hover:-translate-y-0.5 hover:bg-blue-400"
           >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            Let's Connect
+            Let's connect
           </a>
         </div>
       </div>
