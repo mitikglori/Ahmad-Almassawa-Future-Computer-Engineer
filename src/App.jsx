@@ -14,6 +14,7 @@ function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isNavigating, setIsNavigating] = useState(false);
   const [targetProgress, setTargetProgress] = useState(0);
+  const navigationTimeoutRef = useRef();
 
   const sectionOrder = useMemo(() => [
     "home",
@@ -24,52 +25,48 @@ function App() {
   ], []);
 
   const handleNavigate = useCallback((key) => {
+    const container = containerRef.current;
     const el = document.getElementById(key);
-    if (el) {
-      setIsNavigating(true);
-      setActive(key);
-      const container = containerRef.current;
-      // Use native scrollIntoView with scroll-padding-top on the container
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      
-      // Calculate target progress for smooth animation
-      if (container) {
-        const elementPosition = el.offsetTop;
-        const scrollHeight = container.scrollHeight - container.clientHeight;
-        const targetProgressValue = scrollHeight > 0 ? (elementPosition / scrollHeight) * 100 : 0;
-        setTargetProgress(targetProgressValue);
-      }
-      
-      // Reset navigation lock after scroll completes
-      const resetNavigation = () => {
-        setTimeout(() => {
-          setIsNavigating(false);
-        }, 800);
-      };
-      
-      // Listen for scroll end
-      const handleScrollEnd = () => {
-        setIsNavigating(false);
-        containerRef.current?.removeEventListener('scroll', handleScrollEnd);
-      };
-      
-      // Fallback timeout
-      resetNavigation();
-      
-      // Listen for scroll end (more reliable)
-      let scrollTimeout;
-      const onScroll = () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          handleScrollEnd();
-        }, 150);
-      };
-      
-      containerRef.current?.addEventListener('scroll', onScroll, { passive: true });
+
+    if (!container || !el) {
+      return;
     }
+
+    // Cancel any pending navigation timeout from a previous invocation
+    if (navigationTimeoutRef.current) {
+      clearTimeout(navigationTimeoutRef.current);
+      navigationTimeoutRef.current = undefined;
+    }
+
+    setIsNavigating(true);
+    setActive(key);
+
+    const rootStyles = getComputedStyle(document.documentElement);
+    const navHeight = parseFloat(rootStyles.getPropertyValue("--nav-h")) || 0;
+    const rawTarget = el.offsetTop - navHeight;
+    const maxScroll = container.scrollHeight - container.clientHeight;
+    const targetPosition = Math.max(0, Math.min(rawTarget, maxScroll));
+
+    const targetProgressValue = maxScroll > 0 ? (targetPosition / maxScroll) * 100 : 0;
+    setTargetProgress(targetProgressValue);
+
+    container.scrollTo({ top: targetPosition, behavior: "smooth" });
+
+    navigationTimeoutRef.current = setTimeout(() => {
+      setIsNavigating(false);
+      navigationTimeoutRef.current = undefined;
+    }, 700);
   }, []);
 
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (navigationTimeoutRef.current) {
+        clearTimeout(navigationTimeoutRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const root = containerRef.current;
