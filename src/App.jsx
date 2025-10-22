@@ -193,14 +193,22 @@ function App() {
   }, [isNavigating, targetProgress]);
 
   return (
-    <div className="h-screen bg-gray-950 text-white font-sans flex flex-col">
-      <Navbar active={active} onNavigate={handleNavigate} items={sectionOrder} scrollProgress={scrollProgress} />
-      <main ref={containerRef} className="flex-1 overflow-y-scroll scroll-smooth scroll-pt-[var(--nav-h)]">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 font-sans flex flex-col">
+      <Navbar
+        active={active}
+        onNavigate={handleNavigate}
+        items={sectionOrder}
+        scrollProgress={scrollProgress}
+      />
+      <main
+        ref={containerRef}
+        className="flex-1 overflow-y-auto scroll-smooth scroll-pt-[var(--nav-h)]"
+      >
         <Home sectionId="home" className="min-h-[calc(100dvh-var(--nav-h))] scroll-mt-[var(--nav-h)]" />
-        <About sectionId="about" className="min-h-[100dvh] scroll-mt-[var(--nav-h)]" />
-        <Skills sectionId="skills" className="min-h-[100dvh] scroll-mt-[var(--nav-h)]" />
-        <Experience sectionId="experience" className="min-h-[100dvh] scroll-mt-[var(--nav-h)]" />
-        <Projects sectionId="projects" className="min-h-[100dvh] scroll-mt-[var(--nav-h)]" />
+        <About sectionId="about" className="scroll-mt-[var(--nav-h)]" />
+        <Skills sectionId="skills" className="scroll-mt-[var(--nav-h)]" />
+        <Experience sectionId="experience" className="scroll-mt-[var(--nav-h)]" />
+        <Projects sectionId="projects" className="scroll-mt-[var(--nav-h)] pb-24" />
       </main>
       <Footer />
       <FloatingContact />
